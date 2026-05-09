@@ -1,0 +1,17 @@
+const icon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#0D1117"/>
+  <path d="M32 7 52 15v14c0 13-8.4 24.2-20 28-11.6-3.8-20-15-20-28V15L32 7Z" fill="#00FF9C" opacity=".18"/>
+  <path d="M32 11 48 17.4V29c0 10.4-6.6 19.4-16 23-9.4-3.6-16-12.6-16-23V17.4L32 11Z" fill="none" stroke="#00FF9C" stroke-width="3"/>
+  <circle cx="25" cy="29" r="3" fill="#FF3B3B"/>
+  <circle cx="39" cy="29" r="3" fill="#FF3B3B"/>
+  <path d="M23 39c5.2 3.4 12.8 3.4 18 0" fill="none" stroke="#00FF9C" stroke-width="3" stroke-linecap="round"/>
+</svg>`;
+
+export function GET() {
+  return new Response(icon, {
+    headers: {
+      "Content-Type": "image/svg+xml",
+      "Cache-Control": "public, max-age=86400",
+    },
+  });
+}

@@ -1,0 +1,11 @@
+{
+  "animal": "NONE",
+  "confidence": 0,
+  "threat": "CLEAR",
+  "status": "MONITORING",
+  "detections": 104,
+  "latitude": "30.149",
+  "longitude": "78.78",
+  "region": "Pauri Garhwal",
+  "time": "--"
+}

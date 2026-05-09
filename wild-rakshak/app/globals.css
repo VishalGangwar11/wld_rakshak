@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0D1117;
+  --card: #161B22;
+  --neon-green: #00FF9C;
+  --danger-red: #FF3B3B;
+  --warning-yellow: #FFC857;
+  --text-primary: #E5E7EB;
+  --border-dim: #21262D;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #30363d; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--neon-green); }
+
+/* Tactical grid background */
+.tactical-bg {
+  background-image:
+    linear-gradient(rgba(0,255,156,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,156,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Neon glow text */
+.glow-green { text-shadow: 0 0 10px rgba(0,255,156,0.8), 0 0 20px rgba(0,255,156,0.4); }
+.glow-red { text-shadow: 0 0 10px rgba(255,59,59,0.8), 0 0 20px rgba(255,59,59,0.4); }
+.glow-yellow { text-shadow: 0 0 10px rgba(255,200,87,0.8), 0 0 20px rgba(255,200,87,0.4); }
+
+/* Card border glow */
+.card-glow-green { box-shadow: 0 0 0 1px rgba(0,255,156,0.2), 0 0 20px rgba(0,255,156,0.05); }
+.card-glow-red { box-shadow: 0 0 0 1px rgba(255,59,59,0.4), 0 0 20px rgba(255,59,59,0.1); }
+
+/* Scan line animation */
+@keyframes scanLine {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0,255,156,0.6), transparent);
+  animation: scanLine 3s linear infinite;
+  pointer-events: none;
+}
+
+/* Pulse animation */
+@keyframes pulseRing {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+.pulse-ring {
+  animation: pulseRing 2s ease-out infinite;
+}
+
+/* LED blink */
+@keyframes blinkLed {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px currentColor; }
+  50% { opacity: 0.2; box-shadow: none; }
+}
+.led-blink { animation: blinkLed 0.6s ease-in-out infinite; }
+
+/* Threat flash */
+@keyframes threatFlash {
+  0%, 100% { border-color: rgba(255,59,59,0.8); }
+  50% { border-color: rgba(255,59,59,0.1); }
+}
+.threat-flash { animation: threatFlash 1s ease-in-out infinite; }
+
+/* Typing cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor-blink { animation: blink 1s step-end infinite; }
+
+/* Fade in up */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up { animation: fadeInUp 0.5s ease forwards; }
+
+/* Corner brackets for tactical UI */
+.tactical-border {
+  position: relative;
+}
+.tactical-border::before,
+.tactical-border::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--neon-green);
+  border-style: solid;
+  opacity: 0.6;
+}
+.tactical-border::before {
+  top: 0; left: 0;
+  border-width: 1px 0 0 1px;
+}
+.tactical-border::after {
+  bottom: 0; right: 0;
+  border-width: 0 1px 1px 0;
+}
+
+/* Status dot */
+.status-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Hexagonal clip */
+.hex-clip {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
